@@ -1,0 +1,32 @@
+<!-- Navbar -->
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
+				<ul class="navbar-nav ml-auto text-center">
+					<li class="nav-item active">
+					<a class="nav-item nav-link" href="uploadimage">Upload an Image</a>
+					</li>
+				</ul>
+			</div>
+			<div class="mx-auto my-2 order-0 order-md-1 position-relative">
+				<a class="mx-auto" href="/index">
+					<img src="https://media.glassdoor.com/sqll/1035843/adapt-centre-squarelogo-1468504729398.png" width="100" height="100" class="rounded-circle">
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
+
+				<ul class="navbar-nav mr-auto text-right">
+					<li class="nav-item">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="/aboutus">About Us</a>
+						<a class="nav-item nav-link" href="tcdadapt">TCD Adapt</a>
+					</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+	</div>
