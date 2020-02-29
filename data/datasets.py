@@ -54,13 +54,13 @@ class ImageDataset(Dataset):
 
 ''' here data folder is one level behind the code folder, as we want to separate the code from data
 inside data folder there is train_folder 
-should have two sub-folders, A (contains the images) and B (containes the annotations) '''
+should have two sub-folders, A (contains the images) and B (containes the annotations)
 x_data = ImageDataset("./data/%s" % "train_folder",  
                            transforms_='',                            
                            unaligned=False, 
                            mode = "train",                           
                            )
-
+'''
 #x_data[0]  #accessing the first element in the data, should have the first image and its corresponding pixel-levele annotation
 #img = x_data[0]['A']  # getting the image
 #anno = x_data[0]['B']  # getting the annotation
