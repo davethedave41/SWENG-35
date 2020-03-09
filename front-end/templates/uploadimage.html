@@ -8,36 +8,44 @@
 <br>
 <br>
 
+
+
+
+
 <div class="card-group">
- 
-    
+  
  <br></br>
  <div class="mx-auto" width="100">
-    <img src="https://pbs.twimg.com/media/ERYAKj9XsAEvQQB?format=jpg&name=360x360" class="border" width="400" height="400">
- </div>
-
+  <img src={{photos.originalPhoto}} class="border" width="400" height="400">
+</div>
+ 
  <div  class="text-center"  style="width: 18rem">
     <div class="body">
        <br>
       <h3 class="title">Simple</h3>
       <hr></hr>
-      <p class="text">Just upload your image in either a jpeg or png format and our AI will take care of the rest</p>
+      <p class="text">Enter the number of the image you want to upload (Enter 0-4, until 4 it works properly) </p>
       <br>
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAS1BMVEX///8AAABYWFhUVFRhYWGRkZH09PS7u7vc3Nzu7u40NDQxMTFdXV3Dw8Ovr69zc3NQUFB8fHycnJwqKirS0tJEREQdHR2Hh4fl5eU8lf7wAAADeElEQVR4nO3da2/aQBCFYQw2twDhloT//0urilZTw64ZL7ueOdvzfI7QHCl9A5FSz2ZERERERE/O1geU1jWd9QllrZqmWVkfUdK6+W1tfUY5y+ZuaX1IMds/C7fWh5TSNn+11qeU0TWiyqCumn9VGNR101ddUJfNo9qCun1a+GF9Ul7t08DKgtoFBlYV1FVwYEVBfcxodUF9zmhtQf0YWFhFUEMZFRUENZxRAR/UWEYFeFDjGRXQQR3KqEAO6vO70RDgoA5nVMAG9VVGBWhQX2dUQAZVk1EBGFRdRgVeUHUZFXC/Q9VmVIAFVZ9RARXUMRkVQEEdl1EBE9SxGRUoQR2bUQES1PEZFRBBTcmoAAhqWkaF+6CmZlQ4D2p6RoXvoA79blTL9Uf+dzIqHAf1vYwKt0F9N6PCaVDfz6hwGdQcGRUeg5ojo8JhUPNkVLgLaq6MCmdBzZdR4SqoOTMqHAU1b0aFn6Cmf6gf5uYjf+6MCidBzZ9R4SKoJTIqHAS1TEaFeVBLZVRYB7VURoVxUMtlVJgGtWRGhWFQy2ZUmAW1dEaFUVDLZ1TYBDXvh/phJh/5p8ioMAjq4WuhNv8OXv0917/E12H6iWPsggt31mdlNA8unFuflREX4uNCfFyIjwvxcSE+LsTHhfi4EB8X4uNCfFyIjwvxcSE+LsTHhfi4EB8X4uNCfFyIjwvxcSE+LsTHhfi4EB8X4uNCfFw4lWPwjmOGVy63cNzN4TsWGe4ot3Ax6pW5MB0XpuNCzR1cqMGF6bhQcwcXanBhOi7U3MGFGlyYjgs1d3ChBhem40LNHVyowYXpuFBzBxdqcGE6LtTcwYUa9S8M31Huladf+LNrn+1+Mryyl4XlcGEfF3rEhX1c6BEX9nGhR1zYx4UecWEfF3rEhX1c6BEX9v2vC33/3ce4m8NfPeY5G5OLPBsktnDa56qUFHtmy8n6sGxOkYVn68OyOUcW7q0Py2YfWbixPiybTWTh7GJ9WSaX2MCJHoVXXvxhezfr0zK5RRdG/l4RzdD7zKv1cVlcBxZG3rhhGX4jXcMPjOiPiruD9X1ve/mQvU/rC9/0+Wpg7DMlCtXf1iNPVP7nAbjfqIpv0TvU3Ix4kucm/FhN3+Yvfkw8uKL9azwOvpMJunU4H6Yu3cCb7SGb/fnUzn1rT+f9uG9PIiIiInLoF/fXPnFb/W1uAAAAAElFTkSuQmCC" width="100" height="100" class="rounded-circle">
+      <form action='/uploadimage' method='POST'>
+        <label for="title">Title:</label>
+        <input class="form-control" type="text" name='title' id='title'  aria-label="Enter Title">
+        <br>
+        
+       
+        <input type="image" name="submit" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAS1BMVEX///8AAABYWFhUVFRhYWGRkZH09PS7u7vc3Nzu7u40NDQxMTFdXV3Dw8Ovr69zc3NQUFB8fHycnJwqKirS0tJEREQdHR2Hh4fl5eU8lf7wAAADeElEQVR4nO3da2/aQBCFYQw2twDhloT//0urilZTw64ZL7ueOdvzfI7QHCl9A5FSz2ZERERERE/O1geU1jWd9QllrZqmWVkfUdK6+W1tfUY5y+ZuaX1IMds/C7fWh5TSNn+11qeU0TWiyqCumn9VGNR101ddUJfNo9qCun1a+GF9Ul7t08DKgtoFBlYV1FVwYEVBfcxodUF9zmhtQf0YWFhFUEMZFRUENZxRAR/UWEYFeFDjGRXQQR3KqEAO6vO70RDgoA5nVMAG9VVGBWhQX2dUQAZVk1EBGFRdRgVeUHUZFXC/Q9VmVIAFVZ9RARXUMRkVQEEdl1EBE9SxGRUoQR2bUQES1PEZFRBBTcmoAAhqWkaF+6CmZlQ4D2p6RoXvoA79blTL9Uf+dzIqHAf1vYwKt0F9N6PCaVDfz6hwGdQcGRUeg5ojo8JhUPNkVLgLaq6MCmdBzZdR4SqoOTMqHAU1b0aFn6Cmf6gf5uYjf+6MCidBzZ9R4SKoJTIqHAS1TEaFeVBLZVRYB7VURoVxUMtlVJgGtWRGhWFQy2ZUmAW1dEaFUVDLZ1TYBDXvh/phJh/5p8ioMAjq4WuhNv8OXv0917/E12H6iWPsggt31mdlNA8unFuflREX4uNCfFyIjwvxcSE+LsTHhfi4EB8X4uNCfFyIjwvxcSE+LsTHhfi4EB8X4uNCfFyIjwvxcSE+LsTHhfi4EB8X4uNCfFw4lWPwjmOGVy63cNzN4TsWGe4ot3Ax6pW5MB0XpuNCzR1cqMGF6bhQcwcXanBhOi7U3MGFGlyYjgs1d3ChBhem40LNHVyowYXpuFBzBxdqcGE6LtTcwYUa9S8M31Huladf+LNrn+1+Mryyl4XlcGEfF3rEhX1c6BEX9nGhR1zYx4UecWEfF3rEhX1c6BEX9v2vC33/3ce4m8NfPeY5G5OLPBsktnDa56qUFHtmy8n6sGxOkYVn68OyOUcW7q0Py2YfWbixPiybTWTh7GJ9WSaX2MCJHoVXXvxhezfr0zK5RRdG/l4RzdD7zKv1cVlcBxZG3rhhGX4jXcMPjOiPiruD9X1ve/mQvU/rC9/0+Wpg7DMlCtXf1iNPVP7nAbjfqIpv0TvU3Ix4kucm/FhN3+Yvfkw8uKL9azwOvpMJunU4H6Yu3cCb7SGb/fnUzn1rT+f9uG9PIiIiInLoF/fXPnFb/W1uAAAAAElFTkSuQmCC" width="100" height="100" class="rounded-circle" input type='submit'>
+      </form>
     </div>
   </div>
 
-  <div class="mx-auto" width="100">
-    <img src="https://pbs.twimg.com/media/ERYANU8WsAEhyJG?format=jpg&name=360x360" class="border" width="400" height="400">
-  </div>
  
+  <div class="mx-auto" width="100">
+    <img src={{photos.target}} class="border" width="400" height="400">
+  </div>
+  
 </div>
+<br>
 
-<br>
-<br>
-<br>
-<br>
-<img src="http://universitytimes.ie/wp-content/uploads/2014/05/leaked.jpg" height="120" width="400">
-<img src="https://pbs.twimg.com/profile_images/524268617861312512/syQf2fWh.png" class="float-right" height="120" width="140" padding-right="20">
+
+
 {% endblock %}
 
