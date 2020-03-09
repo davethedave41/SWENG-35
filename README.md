@@ -16,3 +16,5 @@ Use a production WSGI server instead.
  * Debugger is active!
  * Debugger PIN: 336-907-092
 
+Use flask-sqlalchemy for database
+ - type "pip install flask-sqlalchemy" in the "front-end" file
