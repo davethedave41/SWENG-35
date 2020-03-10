@@ -5,6 +5,7 @@ import math
 import itertools
 import datetime
 import time
+import calendar
 
 import torchvision.transforms as transforms
 from torchvision.utils import save_image, make_grid
@@ -20,11 +21,14 @@ from utils import *
 import torch.nn as nn
 import torch.nn.functional as F
 import torch
+import platform
+
+import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--epoch", type=int, default=0, help="epoch to start training from")
 parser.add_argument("--n_epochs", type=int, default=200, help="number of epochs of training")
-parser.add_argument("--dataset_name", type=str, default="monet2photo", help="name of the dataset")
+parser.add_argument("--dataset_name", type=str, default="ClothCoParse", help="name of the dataset")
 parser.add_argument("--batch_size", type=int, default=1, help="size of the batches")
 parser.add_argument("--lr", type=float, default=0.0002, help="adam: learning rate")
 parser.add_argument("--b1", type=float, default=0.5, help="adam: decay of first order momentum of gradient")
@@ -40,11 +44,18 @@ parser.add_argument("--n_residual_blocks", type=int, default=9, help="number of 
 parser.add_argument("--lambda_cyc", type=float, default=10.0, help="cycle loss weight")
 parser.add_argument("--lambda_id", type=float, default=5.0, help="identity loss weight")
 opt = parser.parse_args()
+
+if platform.system()=='Windows':
+    opt.n_cpu=0
+
+dt = datetime.datetime.today()
+opt.experiment_name = opt.dataset_name+"-"+calendar.month_abbr[dt.month]+"-"+str(dt.day)
+
 print(opt)
 
 # Create sample and checkpoint directories
-os.makedirs("images/%s" % opt.dataset_name, exist_ok=True)
-os.makedirs("saved_models/%s" % opt.dataset_name, exist_ok=True)
+os.makedirs("images/%s" % opt.experiment_name, exist_ok=True)
+os.makedirs("saved_models/%s" % opt.experiment_name, exist_ok=True)
 
 # Losses
 criterion_GAN = torch.nn.MSELoss()
@@ -72,10 +83,10 @@ if cuda:
 
 if opt.epoch != 0:
     # Load pretrained models
-    G_AB.load_state_dict(torch.load("saved_models/%s/G_AB_%d.pth" % (opt.dataset_name, opt.epoch)))
-    G_BA.load_state_dict(torch.load("saved_models/%s/G_BA_%d.pth" % (opt.dataset_name, opt.epoch)))
-    D_A.load_state_dict(torch.load("saved_models/%s/D_A_%d.pth" % (opt.dataset_name, opt.epoch)))
-    D_B.load_state_dict(torch.load("saved_models/%s/D_B_%d.pth" % (opt.dataset_name, opt.epoch)))
+    G_AB.load_state_dict(torch.load("saved_models/%s/G_AB_%d.pth" % (opt.experiment_name, opt.epoch)))
+    G_BA.load_state_dict(torch.load("saved_models/%s/G_BA_%d.pth" % (opt.experiment_name, opt.epoch)))
+    D_A.load_state_dict(torch.load("saved_models/%s/D_A_%d.pth" % (opt.experiment_name, opt.epoch)))
+    D_B.load_state_dict(torch.load("saved_models/%s/D_B_%d.pth" % (opt.experiment_name, opt.epoch)))
 else:
     # Initialize weights
     G_AB.apply(weights_init_normal)
@@ -116,19 +127,25 @@ transforms_ = [
     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
 ]
 
+
 # Training data loader
 dataloader = DataLoader(
-    ImageDataset("./data/%s" % "train_folder", transforms_=transforms_, unaligned=True),
+    ImageDataset("./data/%s" % opt.dataset_name, transforms_=transforms_, unaligned=True),
     batch_size=opt.batch_size,
     shuffle=True,
-    num_workers=opt.n_cpu,
+    num_workers= opt.n_cpu,
+ 
 )
+
+
+''' test is the same as train, for now '''
+
 # Test data loader
 val_dataloader = DataLoader(
-    ImageDataset("./data/%s" % "train_folder", transforms_=transforms_, unaligned=True, mode="test"),
-    batch_size=5,
+    ImageDataset("./data/%s" % opt.dataset_name, transforms_=transforms_, unaligned=True, mode="train"),
+    batch_size=1,
     shuffle=True,
-    num_workers=1,
+    num_workers=0,
 )
 
 
@@ -148,7 +165,8 @@ def sample_images(batches_done):
     fake_B = make_grid(fake_B, nrow=5, normalize=True)
     # Arange images along y-axis
     image_grid = torch.cat((real_A, fake_B, real_B, fake_A), 1)
-    save_image(image_grid, "images/%s/%s.png" % (opt.dataset_name, batches_done), normalize=False)
+    save_image(image_grid, "images/%s/%s.png" % (opt.experiment_name, batches_done), normalize=False)
+    
 
 
 # ----------
@@ -278,7 +296,7 @@ for epoch in range(opt.epoch, opt.n_epochs):
 
     if opt.checkpoint_interval != -1 and epoch % opt.checkpoint_interval == 0:
         # Save model checkpoints
-        torch.save(G_AB.state_dict(), "saved_models/%s/G_AB_%d.pth" % (opt.dataset_name, epoch))
-        torch.save(G_BA.state_dict(), "saved_models/%s/G_BA_%d.pth" % (opt.dataset_name, epoch))
-        torch.save(D_A.state_dict(), "saved_models/%s/D_A_%d.pth" % (opt.dataset_name, epoch))
-        torch.save(D_B.state_dict(), "saved_models/%s/D_B_%d.pth" % (opt.dataset_name, epoch))
+        torch.save(G_AB.state_dict(), "saved_models/%s/G_AB_%d.pth" % (opt.experiment_name, epoch))
+        torch.save(G_BA.state_dict(), "saved_models/%s/G_BA_%d.pth" % (opt.experiment_name, epoch))
+        torch.save(D_A.state_dict(), "saved_models/%s/D_A_%d.pth" % (opt.experiment_name, epoch))
+        torch.save(D_B.state_dict(), "saved_models/%s/D_B_%d.pth" % (opt.experiment_name, epoch))
