@@ -2,6 +2,7 @@ import glob
 import random
 import os
 import scipy.io as sio
+import matplotlib.pyplot as plt 
 
 from torch.utils.data import Dataset # Dataset class from PyTorch
 from PIL import Image # PIL is a nice Python Image Library that we can use to handle images
@@ -22,7 +23,11 @@ class ImageDataset(Dataset):
         # transform_ is an actual parameter that contains some transform that we can apply on each image, for example, rotation, translation, scaling, etc
         # if the source and target are aligned, this is supervised learning, otherwise it is unsupervised learning
         # Yes, amazingly, CycleGan can learn well even if the source and target images are unaligned (ie umpaired)
-        self.transform = transforms.Compose(transforms_) # image transform
+        if transforms_ != None:
+            self.transform = transforms.Compose(transforms_) # image transform
+        else:
+            self.transform = None
+        
         self.unaligned = unaligned
 
         self.files_A = sorted(glob.glob(os.path.join(root, "%s/A" % mode) + "/*.*")) # get the source image file-names
@@ -44,8 +49,10 @@ class ImageDataset(Dataset):
         if image_B.mode != "RGB":
             image_B = to_rgb(image_B)
 
-        item_A = self.transform(image_A) # here we apply the transform on the source
-        item_B = self.transform(image_B) # apply the transform on the target (in our case, the target is the pixel-wise annotation that marks the garments)
+        if self.transform != None:
+            item_A = self.transform(image_A) # here we apply the transform on the source
+            item_B = self.transform(image_B) # apply the transform on the target (in our case, the target is the pixel-wise annotation that marks the garments)
+        
         return {"A": item_A, "B": item_B} # we are returning both the source and the target
 
     def __len__(self): # this function returns the length of the dataset, the source might not equal the target if the data is unaligned
@@ -54,13 +61,14 @@ class ImageDataset(Dataset):
 
 ''' here data folder is one level behind the code folder, as we want to separate the code from data
 inside data folder there is train_folder 
-should have two sub-folders, A (contains the images) and B (containes the annotations)
-x_data = ImageDataset("./data/%s" % "train_folder",  
+should have two sub-folders, A (contains the images) and B (containes the annotations)'''
+x_data = ImageDataset("./data/%s" % "ClothCoParse",  
                            transforms_='',                            
                            unaligned=False, 
                            mode = "train",                           
                            )
-'''
+                           
 #x_data[0]  #accessing the first element in the data, should have the first image and its corresponding pixel-levele annotation
 #img = x_data[0]['A']  # getting the image
 #anno = x_data[0]['B']  # getting the annotation
+#plt.imshow(anno.convert('L'),  cmap= plt.cm.get_cmap("gist_stern"), vmin=0, vmax=255)
