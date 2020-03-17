@@ -80,7 +80,7 @@ with torch.no_grad():
     B_gan = G_AB(real_A.unsqueeze(0))   
 
 PIL_A_img.show()             
-plt.imshow(PIL_B_img.convert('L'),  cmap= cmap, vmin=0, vmax=255)
+plt.imshow(PIL_B_img.convert('L'),  cmap= cmap, vmin=0, vmax=54)
 show_tensor(B_gan)              
 
 
