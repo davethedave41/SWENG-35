@@ -76,5 +76,5 @@ with torch.no_grad():
     B_output = G_AB(real_A.unsqueeze(0))
 
 PIL_A_img.show()  # show the original image
-plt.imshow(PIL_B_img.convert('L'),  cmap= cmap, vmin=0, vmax=54)  # show the pixel-level annotation
+plt.imshow(PIL_B_img.convert('L'),  cmap= cmap, vmin=0, vmax=55)  # show the pixel-level annotation
 show_tensor(B_output)  # show the segmented image we get from the model
