@@ -1,0 +1,67 @@
+<!-- Inherits value of base.html -->
+{% extends "base.html" %}
+<!-- Homepage will be replace by block content -->
+{% block title %}Index{% endblock %}
+
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<image src="https://images.unsplash.com/photo-1450387635522-8ecb968079bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=1522&q=80"
+	height=450 width=100%></image>
+
+	<hr></hr>
+	
+	<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+	
+
+	<div class="card-group">
+		<div class="card" width="100">
+			<a href="/tcdadapt">
+				<img src="https://images.unsplash.com/photo-1581824071400-9a4334691b35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=333&q=80" class="	card-img-top" alt="..." >
+			</a>
+			<div class="card-body">
+				<a href="/aboutus">
+				<h5 class="card-title">About Us</h5>
+				</a>
+				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+			</div>
+		</div>
+		<div class="card">
+			<a href="tcdadapt">
+				<img src="https://pbs.twimg.com/profile_images/524268617861312512/syQf2fWh.png" class="card-img-top" alt="...">
+			</a>
+			<div class="card-body">
+				<a href="tcdadapt"><h5 class="card-title">Card title</h5></a>
+				<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+			</div>
+		</div>
+		<div class="card">
+			<a href="uploadimage">
+				<img src="https://esslab.jp/~ess/images/fashion/results/000151_gt.png" class="card-img-top" alt="...">
+			</a>
+			<div class="card-body">
+				<a href="uploadimage"><h5 class="card-title">Card title</h5></a>
+				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>
+
+
+{% endblock %}
