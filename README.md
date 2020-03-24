@@ -18,3 +18,16 @@ Use a production WSGI server instead.
 
 Use flask-sqlalchemy for database
  - type "pip install flask-sqlalchemy" in the "front-end" file
+
+How to use "implement_with_backend" in "front-end"
+ - install flask-sqlalchemy, torchvision, scipy, matplotlib by typing
+   "pip install flask-sqlalchemy",
+   "pip install torchvision",
+   "pip install scipy",
+   "pip install matplotlib" in ".../SWENG-35/front-end/implement_with_backend/ClothCoParse"
+ - Make sure you have flask (i recommend using pip to downlaod) and python installed on your system
+ - extract the files in "photos" (".../clothing-co-parsing-master/photos") from "https://github.com/morawi/ClothExtract" and put them into ".../SWENG-35/front-end/implement_with_backend/Data/ClothCoParse/train/A"
+ - extract the files in "photos" (".../clothing-co-parsing-master/annotations/pixel-leve") from "https://github.com/morawi/ClothExtract" and put them into ".../SWENG-35/front-end/implement_with_backend/Data/ClothCoParse/train/B"
+ - change the path on line 94 in "adapt_website.py", 
+   the path on line 53 in "load_then_test_model.py" and
+   the path on line 42 in "datasets.py"
