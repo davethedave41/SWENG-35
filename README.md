@@ -24,7 +24,7 @@ How to use "implement_with_backend" in "front-end"
    "pip install flask-sqlalchemy",
    "pip install torchvision",
    "pip install scipy",
-   "pip install matplotlib" in ".../SWENG-35/front-end/implement_with_backend/ClothCoParse"
+   "pip install matplotlib" in ".../SWENG-35/front-end/implement_with_backend/ClothExtract2"
  - Make sure you have flask (i recommend using pip to downlaod) and python installed on your system
  - extract the files in "photos" (".../clothing-co-parsing-master/photos") from "https://github.com/morawi/ClothExtract" and put them into ".../SWENG-35/front-end/implement_with_backend/Data/ClothCoParse/train/A"
  - extract the files in "photos" (".../clothing-co-parsing-master/annotations/pixel-leve") from "https://github.com/morawi/ClothExtract" and put them into ".../SWENG-35/front-end/implement_with_backend/Data/ClothCoParse/train/B"
