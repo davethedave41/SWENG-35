@@ -1,0 +1,24 @@
+<!-- Inherits value of base.html -->
+{% extends "base.html" %}
+<!-- Homepage will be replace by block content -->
+{% block title %}Index{% endblock %}
+{% block content %}
+<h1>About Us  </h1>
+<image src="https://www.tcd.ie/Political_Science/assets/images/homepage/slider-campanile.gif" />
+<br>
+<br>
+<h2>Project: Clothing classification and segmentation toolbox</h2>
+<br>
+<p>Several companies are racing to provide Fashion AI services to clothing retailers and there are quite a few
+    problems to be solved, for example clothing classification, segmentation, tagging, retrieval, captioning, etc.
+    Clothing classification and segmentation are highly important as they are considered the backbone of
+    many end-to-end clothing services. Luckily, there are several image datasets regarding different types of
+    clothing; for example Fashion-IQ (https://arxiv.org/pdf/1905.12794.pdf) and DeepFashion-2
+    (https://arxiv.org/pdf/1901.07973.pdf), that can be used to build the toolbox. The foreseen software /
+    toolbox should be able to classify each image to the category of the cloth, eg, dress, top, tee, t-shirts, etc.
+    The other task, which is also very important, aims to segment the clothes that a person is wearing. These
+    projects, however, could be broken down into two; one for cloths classification and the other for clothes
+    segmentation; or, to just go with the clothes classification as it is simpler than segmentation. In any case, software development and practical support will be provided to the students. Deep learning platform to use
+    is PyTorch, and the students can also make use of the related open-source technology.</p>
+{% endblock %}
+

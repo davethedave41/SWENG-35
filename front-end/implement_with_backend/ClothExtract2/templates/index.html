@@ -1,0 +1,68 @@
+<!-- Inherits value of base.html -->
+{% extends "base.html" %}
+<!-- Homepage will be replace by block content -->
+{% block title %}Index{% endblock %}
+
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<image src="https://cdn.pixabay.com/photo/2015/11/07/11/46/fashion-1031469_1280.jpg"
+	height=450 width=100%></image>
+
+	<hr></hr>
+	
+	<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">TCD ADAPT PROJECT</h1>
+    <p class="lead">Simply upload your image and recieve the same image with clothing item segmented using our AI</p>
+  </div>
+</div>
+	
+
+	<div class="card-group">
+		<div class="card" width="100" height ="300">
+			<a href="/aboutus">
+				<img src ="https://www.marj3.com/wp-content/uploads/2018/04/ireland.jpg"class="	card-img-top" alt="..." height ="500">
+				
+			</a>
+			<div class="card-body">
+				<a href="/aboutus">
+				<h5 class="card-title">About Us</h5>
+				</a>
+				<p class="card-text">Our Project Description</p>
+			</div>
+		</div>
+		<div class="card" width="100" height ="300">
+			<a href="https://www.adaptcentre.ie/">
+				<img src="https://pbs.twimg.com/profile_images/524268617861312512/syQf2fWh.png" class="card-img-top" alt="...">
+			</a>
+			<div class="card-body">
+				<a href="https://www.adaptcentre.ie/"><h5 class="card-title">About TCD ADAPT</h5></a>
+				<p class="card-text">What is TCD ADAPT?</p>
+			</div>
+		</div>
+		<div class="card" width="100" height ="300">
+			<a href="uploadimage">
+				<img src="https://esslab.jp/~ess/images/fashion/results/000151_gt.png" class="card-img-top" alt="..." height ="500">
+			</a>
+			<div class="card-body">
+				<a href="uploadimage"><h5 class="card-title">Upload Image</h5></a>
+				<p class="card-text">Simply upload your image and recieve the same image with clothing item segmented using our AI</p>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>
+
+
+{% endblock %}
