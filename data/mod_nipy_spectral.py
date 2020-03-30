@@ -44,4 +44,4 @@ def show_colour_labels():
     # Displaying the figure
     plt.show()
 
-show_colour_labels()
+#show_colour_labels()
