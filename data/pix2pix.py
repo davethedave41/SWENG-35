@@ -125,7 +125,7 @@ transforms_B = [
 
 # Image transformations
 
-x_data= ImageDataset("../data/%s" % opt.dataset_name, 
+x_data= ImageDataset("./data/%s" % opt.dataset_name, 
                      transforms_A=transforms_A, transforms_B=transforms_B,
                      mode="train", 
                      unaligned=False, 
@@ -146,7 +146,7 @@ dataloader = DataLoader(
 
 '''test is same as train for now'''
 val_dataloader = DataLoader(
-    ImageDataset("../data/%s" % opt.dataset_name, transforms_A=transforms_A, 
+    ImageDataset("./data/%s" % opt.dataset_name, transforms_A=transforms_A, 
                  transforms_B=transforms_B, 
                  mode="train", 
                  unaligned=False, 
