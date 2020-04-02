@@ -30,7 +30,7 @@ for l in range(59):
 model_name = 'generator_800.pth' 
 dataset_name = 'ClothCoParse'
 experiment_name = '' # to be added 
-path2model = '/home/michal/cs/sweng/pix2pix/saved_models/ClothCoParse-pix2pix-Mar-29-at-22-25/'
+path2model = './saved_models/'
 output_channels = 1
 
 print('model used', model_name) 
@@ -78,16 +78,25 @@ if cuda: real_A = real_A.to(device)
 with torch.no_grad():
     B_output = G_AB(real_A.unsqueeze(0))
     
-PIL_A_img.show() # show the original image            
+#PIL_A_img.show() # show the original image
 
 def show_tensor(img, show_img=True):
     to_pil = transforms.ToPILImage()
     img = to_pil(img.squeeze())  # we can also use test_set[1121][0].numpy()
     if show_img:
-        im = plt.imshow(PIL_B_img.convert('L'),  cmap= cmap, vmin=0, vmax=59) # show the pixel-level annotation
-        plt.axis('off')
+        arr = np.unique(np.asarray(img))
+        print(arr)
 
-        arr = np.unique(np.asarray(PIL_B_img))
+        im = plt.imshow(img.convert('L'))  # show the pixel-level annotation
+        plt.show()
+
+        im = plt.imshow(img.convert('L'),  cmap= cmap, vmin=0, vmax=arr[len(arr)-1]) # show the pixel-level annotation
+        plt.show()
+
+        plt.axis('off')
+        #plt.show(); #shows the plotted image
+
+        '''
         mat = scipy.io.loadmat('label_list.mat')
         labels = []
         for l in range(len(arr)):
@@ -98,11 +107,13 @@ def show_tensor(img, show_img=True):
         colors = [ im.cmap(im.norm(value)) for value in arr]
         patches = [ mpatches.Patch(color=colors[i], label=labels[i]) for i in range(len(arr))]
         plt.legend(handles=patches, bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0)
-        
+        '''
+
+
         buf = io.BytesIO()
         plt.savefig(buf, format='png', bbox_inches='tight')
         buf.seek(0)
-        img = Image.open(buf)
+        #img = Image.open(buf)
         #img.show()
         #buf.close()
         # img.show()
