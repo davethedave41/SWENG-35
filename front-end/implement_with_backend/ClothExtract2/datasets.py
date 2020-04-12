@@ -98,11 +98,11 @@ x_data = ImageDataset("../data/%s" % "ClothCoParse",
                             Convert_B2_mask = True
                             )
 
-x_data[0]  #accessing the first element in the data, should have the first image and its corresponding pixel-levele annotation
-img = x_data[0]['A']  # getting the image
-anno = x_data[0]['B']  # getting the annotation
+# x_data[0]  #accessing the first element in the data, should have the first image and its corresponding pixel-levele annotation
+# img = x_data[0]['A']  # getting the image
+# anno = x_data[0]['B']  # getting the annotation
 
 
-plt.imshow(anno.convert('L'),  cmap= plt.cm.get_cmap("gist_stern"), vmin=0, vmax=255)
+# plt.imshow(anno.convert('L'),  cmap= plt.cm.get_cmap("gist_stern"), vmin=0, vmax=255)
 
 
